@@ -1,0 +1,23 @@
+:root {
+    /*Colores*/
+    --aqua: #27F5F1;          /* aqua brillante */
+    --azul-primario: #2776F5; /* azul principal */
+    --azul-celeste: #27B7F5;  /* azul cielo */
+    --turquesa: #27F5AD;      /* verde aqua */
+    --azul-electrico: #2735F5;/* azul intenso */
+    --azul-claro: #78CFF5;    /* azul pastel */
+    /*Tamaños de fuente o texto*/
+    --sm: 10px;
+    --md: 15px;
+    --lg: 19px;
+    /*fuente o tipografia*/
+    --fuente-titulos: 'Zalando Sans';
+    --fuente-textos: 'Open Sans';
+}
+/*¿como se usan las variables root?*/
+/* 
+.menu {
+    color: var(--azul-claro); // en el atributo colocamos var() y 
+    entre el parentesis la variable Root en este caso --azul-claro
+}
+*/
