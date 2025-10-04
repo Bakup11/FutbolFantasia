@@ -15,9 +15,11 @@
     --fuente-textos: 'Open Sans';
 }
 /*¿como se usan las variables root?*/
-/* 
-.menu {
-    color: var(--azul-claro); // en el atributo colocamos var() y 
-    entre el parentesis la variable Root en este caso --azul-claro
+.ejemplo {
+    font-family: var(--fuente-textos);
+    color: var(--azul-claro);
+    size: var(--md); 
+    /*en el atributo colocamos var() y 
+    entre el parentesis la variable Root en este caso --azul-claro o --md*/
 }
-*/
+
