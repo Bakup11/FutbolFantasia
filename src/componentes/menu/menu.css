@@ -1,0 +1,98 @@
+/* --- MENÚ PRINCIPAL --- */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--azul-primario);
+  padding: 10px 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  font-family: var(--fuente-textos);
+  color: white;
+}
+
+/* LOGO */
+.menu__logo h1 {
+  font-family: var(--fuente-titulos);
+  font-size: var(--lg);
+  color: var(--aqua);
+  margin: 0;
+}
+
+/* TABS DE NAVEGACIÓN */
+.menu__tabs {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__tabs a {
+  text-decoration: none;
+  color: white;
+  font-size: var(--md);
+  font-weight: 500;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.menu__tabs a:hover {
+  color: var(--turquesa);
+  border-bottom: 2px solid var(--turquesa);
+}
+
+/* BOTONES DE LOGIN / REGISTRO */
+.menu__auth {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  font-family: var(--fuente-textos);
+  font-size: var(--md);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn--registro {
+  background: var(--turquesa);
+  color: #fff;
+}
+
+.btn--registro:hover {
+  background: var(--aqua);
+  transform: scale(1.05);
+}
+
+.btn--login {
+  background: transparent;
+  border: 2px solid var(--aqua);
+  color: var(--aqua);
+}
+
+.btn--login:hover {
+  background: var(--aqua);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .menu__tabs {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .menu__auth {
+    align-self: flex-end;
+  }
+}
