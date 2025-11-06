@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--azul-primario);
+  background: var(--);
   padding: 10px 25px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   font-family: var(--fuente-textos);
@@ -14,7 +14,7 @@
 .menu__logo h1 {
   font-family: var(--fuente-titulos);
   font-size: var(--lg);
-  color: var(--aqua);
+  color: var();
   margin: 0;
 }
 
@@ -37,11 +37,12 @@
 }
 
 .menu__tabs a:hover {
-  color: var(--turquesa);
-  border-bottom: 2px solid var(--turquesa);
+  color: var();
+  border-bottom: 2px solid var();
 }
 
 /* BOTONES DE LOGIN / REGISTRO */
+/*
 .menu__auth {
   display: flex;
   gap: 10px;
@@ -77,7 +78,7 @@
   background: var(--aqua);
   color: #fff;
   transform: scale(1.05);
-}
+}*/
 
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 768px) {

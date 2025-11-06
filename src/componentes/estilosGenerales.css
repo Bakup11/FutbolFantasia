@@ -1,11 +1,22 @@
 :root {
     /*Colores*/
-    --aqua: #27F5F1;          /* aqua brillante */
-    --azul-primario: #2776F5; /* azul principal */
-    --azul-celeste: #27B7F5;  /* azul cielo */
-    --turquesa: #27F5AD;      /* verde aqua */
-    --azul-electrico: #2735F5;/* azul intenso */
-    --azul-claro: #78CFF5;    /* azul pastel */
+    --aqua-celeste: #27f5e5;            /* aqua celeste brillante (encabezado) */
+    --verde-aqua-suave: #27f5b8;               /* verde aqua suave (títulos) */
+    --azul-casi-negro: #0a0f1a;      /* azul casi negro (fondo encabezado) */
+    --azul-celeste-fuerte: #27aef5;          /* azul celeste fuerte (botones home) */
+    --blanco-con-opacidad-suave: #ffffff1c; /* blanco con opacidad suave (blanco con transparencia al 11%) */
+    /* Nota: #ffffff con 11% de transparencia = #ffffff1c */
+
+    --verde-aqua-con-opacidad: #27f5ad26;  /* verde aqua con opacidad (cuadro liga española con transparencia al 15%) */
+    /* Nota: #27f5ad con 15% transparencia = #27f5ad26 */
+
+    --verde-aqua-brillante: #27f5ad; /* verde aqua brillante (jugadores seleccionados y presupuesto) */
+    
+    /*colores para los degradados*/
+    --azul-oscuro-profundo: #0d3687; /* azul oscuro profundo (home degradado izquierda) */
+    --azul-vibrante-medio: #2691f0;   /* azul vibrante medio (home degradado derecha) */
+    --azul-muy-oscuro: #0b0f1c; /* azul muy oscuro (liga degrado izquierda) */
+    --azul-grisáceo-profundo: #161b29;   /* azul grisáceo profundo (liga degrado derecha) */
     /*Tamaños de fuente o texto*/
     --sm: 10px;
     --md: 15px;
@@ -16,6 +27,7 @@
 }
 *{
     margin: 0;
+    padding: 0;
 }
 /*¿como se usan las variables root?*/
 .ejemplo {
