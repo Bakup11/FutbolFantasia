@@ -1,8 +1,8 @@
 console.log("Ruta Menu cargando:", import.meta.url);
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
 import './componentes/estilosGenerales.css'
-import Menu from './componentes/menu/menu'
+import Menu from './componentes/menu/menu.jsx'
 //constates temporales para probar el menu
 const Home = () => <h2>Home</h2>;
 const Perfil = () => <h2>Perfil</h2>;
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
     {/*menu, esto es un comentario en react*/}
-    <Router>
+    <BrowserRouter>
       <Menu />
     {/*rutas para el funcionamiento del menu,!hay que modificarlo cuando esten loscomponentes front-end listos*/}
       <Routes>
@@ -26,7 +26,7 @@ function App() {
         <Route path="/misEquipos" element={<Equipos />} />
         <Route path="/ranking" element={<Ranking />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
     </>
   )
 }

@@ -6,8 +6,10 @@ const Menu = () => {
   return (
     <nav className="menu">
       <div className="menu__logo">
-        <div className="logo_agus"></div>
-        <h1>Futbol de Fantasia</h1>
+        <div className="logo_agus">
+          <img src="./src/componentes/IMG/Logo liga uniagustiniana.png" alt="Logo Agus"/>
+        </div>
+        <div className="texto_encabezado"><h1>Futbol de Fantasia</h1></div>
       </div>
 
       <ul className="menu__tabs">
