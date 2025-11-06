@@ -23,7 +23,7 @@
   align-content: center;
 }
 .logo_agus{
-  width: 30%;
+  width: 20%;
   min-width: 40px;
   height: 100%;
 }
@@ -33,7 +33,7 @@
   object-fit: contain;
 }
 .texto_encabezado{
-  width: 70%;
+  width: 80%;
   height: 100%;
   display: flex;
   /*justify-content: center;*/
