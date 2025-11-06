@@ -1,4 +1,3 @@
-import React from "react";
 import "./menu.css";
 import '../estilosGenerales.css';
 import { Link } from "react-router-dom";
@@ -19,11 +18,6 @@ const Menu = () => {
         <li><Link to="/misEquipos">Mis Equipos</Link></li>
         <li><Link to="/ranking">Ranking</Link></li>
       </ul>
-
-      {/*<div className="menu__auth">
-        <button className="btn btn--registro">Registro</button>
-        <button className="btn btn--login">Login</button>
-      </div>*/}
     </nav>
   );
 };

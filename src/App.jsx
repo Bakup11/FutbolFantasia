@@ -1,5 +1,4 @@
 console.log("Ruta Menu cargando:", import.meta.url);
-import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import './App.css'
 import './componentes/estilosGenerales.css'
