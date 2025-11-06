@@ -17,7 +17,7 @@ function App() {
     {/*menu, esto es un comentario en react*/}
     <BrowserRouter>
       <Menu />
-    {/*rutas para el funcionamiento del menu,!hay que modificarlo cuando esten loscomponentes front-end listos*/}
+    {/*rutas para el funcionamiento del menu,!hay que modificarlo cuando esten los componentes front-end listos*/}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
