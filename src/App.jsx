@@ -1,8 +1,16 @@
+console.log("Ruta Menu cargando:", import.meta.url);
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import './App.css'
 import './componentes/estilosGenerales.css'
-import Menu from './componentes/menu/menu.jsx'
+import Menu from './componentes/menu/menu'
+//constates temporales para probar el menu
+const Home = () => <h2>Home</h2>;
+const Perfil = () => <h2>Perfil</h2>;
+const Ligas = () => <h2>Ligas</h2>;
+const Jugadores = () => <h2>Jugadores</h2>;
+const Equipos = () => <h2>Equipos</h2>;
+const Ranking = () => <h2>Ranking</h2>;
 
 function App() {
   return (

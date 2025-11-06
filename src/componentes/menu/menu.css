@@ -3,18 +3,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--);
+  background: var(--azul-casi-negro);
   padding: 10px 25px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   font-family: var(--fuente-textos);
   color: white;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+
 }
 
 /* LOGO */
 .menu__logo h1 {
   font-family: var(--fuente-titulos);
   font-size: var(--lg);
-  color: var();
+  color: var(--aqua-celeste);
   margin: 0;
 }
 
@@ -37,8 +41,7 @@
 }
 
 .menu__tabs a:hover {
-  color: var();
-  border-bottom: 2px solid var();
+  color: var(--azul-celeste-fuerte);
 }
 
 /* BOTONES DE LOGIN / REGISTRO */
