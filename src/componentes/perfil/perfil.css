@@ -1,0 +1,159 @@
+/* Colores base para un tema oscuro */
+:root {
+    --bg-color: #1a1a2e; /* Fondo principal oscuro */
+    --card-bg: #22223b; /* Fondo de tarjeta (un poco más claro) */
+    --text-color: #ffffff;
+    --primary-color: #007bff; /* Azul primario para botones/énfasis */
+    --secondary-color: #dc3545; /* Rojo secundario para Cerrar Sesión */
+    --input-bg: #3c3c5a; /* Fondo de input */
+}
+
+/* Estilos globales para el componente */
+.perfil-container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center; 
+}
+
+.perfil-header h1 {
+    font-size: 3em;
+    color: #64ffda; /* Un color de énfasis/branding como el verde azulado de tu imagen */
+    margin-bottom: 5px;
+    align-content: center;
+}
+
+.perfil-header p {
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Estilo de la tarjeta principal */
+.profile-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.team-name {
+    font-size: 1.8em;
+    color: #a7ff83; /* Otro color de énfasis */
+    margin-bottom: 10px;
+}
+
+.motto {
+    font-style: italic;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    font-size: 30px;
+}
+
+.ranking {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.section-title {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    width: 100%;
+    text-align: left;
+    color: #50d8a0;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 30px 0;
+}
+
+/* Estilos de Formulario e Inputs */
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    justify-content: left;
+    
+}
+
+.password-form input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.password-form input:focus {
+    outline: none;
+    background-color: #4a4a6e;
+}
+
+/* Estilos de Botones */
+.btn-primary, .btn-secondary {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    margin-top: 5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color); /* Botón azul */
+    color: var(--text-color);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color); /* Botón rojo (Cerrar Sesión) */
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #b02a37;
+}
+
+/* Estilos de Mensajes de Feedback */
+.feedback-message {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.feedback-message.success {
+    background-color: #28a74533; /* Fondo verde semi-transparente */
+    color: #28a745;
+}
+
+.feedback-message.error {
+    background-color: #dc354533; /* Fondo rojo semi-transparente */
+    color: var(--secondary-color);
+}
