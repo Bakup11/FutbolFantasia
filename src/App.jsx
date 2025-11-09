@@ -5,10 +5,12 @@ import './componentes/estilosGenerales.css'
 import Menu from './componentes/menu/menu.jsx';
 import Perfil from "./componentes/perfil/page.tsx"; // 1. Importa el componente real
 import PanelAdmin from "./componentes/administrador/PanelAdmin.jsx";
+import Jugadores from "./componentes/jugadores/Jugadores.jsx";
+
 //constates temporales para probar el menu
 const Home = () => <h2>Home</h2>;
 const Ligas = () => <h2>Ligas</h2>;
-const Jugadores = () => <h2>Jugadores</h2>;
+const JugadoresTemp = () => <h2>Jugadores</h2>;
 const Equipos = () => <h2>Equipos</h2>;
 const Ranking = () => <h2>Ranking</h2>;
 const Admin =() => <h2>PanelAdmin</h2>

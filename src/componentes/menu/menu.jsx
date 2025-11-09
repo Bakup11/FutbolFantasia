@@ -17,7 +17,7 @@ const Menu = () => {
         <li><Link to="/perfil">Perfil</Link></li>
         <li><Link to="/administrador">Admin</Link></li>
         <li><Link to="/verLiga">Ver ligas</Link></li>
-        <li><Link to="/jugadores">Jugadores</Link></li>
+        <li><Link to="jugadores">Jugadores</Link></li>
         <li><Link to="/misEquipos">Mis Equipos</Link></li>
         <li><Link to="/ranking">Ranking</Link></li>
       </ul>

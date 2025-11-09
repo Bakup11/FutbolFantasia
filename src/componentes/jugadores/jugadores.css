@@ -1,0 +1,149 @@
+.contenedor-jugadores {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  padding: 20px;
+  background-color: #0a0f2c;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: white;
+}
+
+/* 🏟️ Cancha */
+.campo {
+  flex: 1;
+  max-width: 600px; /* ⚠️ más angosta */
+  background: linear-gradient(180deg, #0e2f5a 0%, #061b34 100%);
+  border: 3px solid #00aaff;
+  border-radius: 15px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+}
+
+/* 🧢 Nombre del equipo */
+.nombre-equipo {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #27f5e5;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(39, 245, 229, 0.6);
+}
+
+/* 🧩 Zonas de posición */
+.zona {
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  min-height: 70px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.zona h4 {
+  color: #9bd3ff;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+/* 🧍 Jugadores en cancha */
+.jugador-mini {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+
+.jugador-mini img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #00ccff;
+  box-shadow: 0 0 8px #00ccff;
+}
+
+/* 💰 Información inferior */
+.info-inferior {
+  border-top: 2px solid #00aaff;
+  padding-top: 10px;
+  text-align: center;
+  margin-top: 15px;
+  color: #aeeaff;
+  font-size: 15px;
+}
+
+/* 📋 Plantilla lateral */
+.plantilla {
+  flex: 0.8;
+  max-width: 380px;
+  background: linear-gradient(180deg, #0e2f5a 0%, #061b34 100%);
+  border: 2px solid #00aaff;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+  padding: 15px;
+  border-radius: 12px;
+  height: 90vh;
+  overflow-y: auto;
+  color: white;
+}
+
+.plantilla h2 {
+  text-align: center;
+  color: #27f5e5;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(39, 245, 229, 0.5);
+}
+
+.lista-jugadores {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 🎴 Tarjeta de jugador */
+.jugador-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 51, 102, 0.8);
+  border: 1px solid #00aaff;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: grab;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+}
+
+.jugador-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  background: rgba(0, 102, 204, 0.8);
+}
+
+.jugador-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #27f5e5;
+}
+
+.jugador-card strong {
+  color: #27f5e5;
+}
+
+.jugador-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #d8f4ff;
+}
+
+.jugador-card span {
+  font-size: 12px;
+  color: #9bd3ff;
+}
