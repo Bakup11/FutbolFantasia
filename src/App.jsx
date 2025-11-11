@@ -6,6 +6,9 @@ import Menu from './componentes/menu/menu.jsx';
 import Perfil from "./componentes/perfil/page.tsx"; // 1. Importa el componente real
 import PanelAdmin from "./componentes/administrador/PanelAdmin.jsx";
 import Jugadores from "./componentes/jugadores/Jugadores.jsx";
+import Navbar from "./componentes/inicio/Navbar.jsx";
+import Hero from "./componentes/inicio/Hero";
+import Features from "./componentes/inicio/Features";
 
 //constates temporales para probar el menu
 const Home = () => <h2>Home</h2>;
