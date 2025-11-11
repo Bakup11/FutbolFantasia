@@ -26,7 +26,7 @@ function App() {
       <Menu />
     {/*rutas para el funcionamiento del menu,!hay que modificarlo cuando esten los componentes front-end listos*/}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Hero />} />
         <Route path="/perfil" element={<Perfil />} /> {/* 2. Ahora sí usa el componente correcto */}
         <Route path="/verLiga" element={<Ligas />} />
         <Route path="/jugadores" element={<Jugadores />} />
