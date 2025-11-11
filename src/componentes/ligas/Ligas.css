@@ -1,0 +1,124 @@
+/* ======= PALETA DE COLORES DEL TEMA ======= */
+:root {
+  --bg-color: #1a1a2e; /* Fondo principal oscuro */
+  --card-bg: #22223b; /* Fondo de tarjeta */
+  --text-color: #ffffff;
+  --primary-color: #64ffda; /* Verde-azulado brillante para títulos */
+  --secondary-color: #007bff; /* Azul acento */
+  --input-bg: #3c3c5a; /* Fondo secundario */
+}
+
+/* ======= CONTENEDOR GENERAL ======= */
+.ligas-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ======= ENCABEZADO ======= */
+.ligas-header h1 {
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.ligas-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1em;
+  margin-bottom: 60px;
+}
+
+/* ======= TARJETAS DE LIGAS ======= */
+.ligas-cards {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.liga-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 2px solid transparent;
+}
+
+.liga-card:hover {
+  transform: translateY(-8px);
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+/* ======= ENCABEZADO DE CADA TARJETA ======= */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.card-header img {
+  width: 50px;
+  height: 50px;
+}
+
+.card-header h2 {
+  font-size: 1.4em;
+  color: var(--text-color);
+}
+
+/* ======= TEXTO DESCRIPTIVO ======= */
+.liga-card p {
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* ======= ESTADÍSTICAS ======= */
+.card-stats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+}
+
+.stat {
+  background-color: var(--input-bg);
+  border-radius: 10px;
+  padding: 16px;
+  width: 25%;
+}
+
+.stat h3 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.stat span {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 768px) {
+  .ligas-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .liga-card {
+    width: 90%;
+  }
+}
