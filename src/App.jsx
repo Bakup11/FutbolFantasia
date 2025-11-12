@@ -1,44 +1,37 @@
-console.log("Ruta Menu cargando:", import.meta.url);
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import SeleccionJugadores from "./componentes/seleccion jugadores/seleccionJugadores";
+
+<Route path="/seleccion" element={<SeleccionJugadores />} />
+
 import './App.css'
-import './componentes/estilosGenerales.css'
-import Menu from './componentes/menu/menu.jsx';
-import Perfil from "./componentes/perfil/page.tsx"; // 1. Importa el componente real
-import PanelAdmin from "./componentes/administrador/PanelAdmin.jsx";
-import Jugadores from "./componentes/jugadores/Jugadores.jsx";
-import Navbar from "./componentes/inicio/Navbar.jsx";
-import Hero from "./componentes/inicio/Hero";
-import Features from "./componentes/inicio/Features";
-
-// ✅ Importar correctamente los archivos de Ligas
-import Ligas from "./componentes/ligas/Ligas.jsx";
-import "./componentes/ligas/Ligas.css";
-
-//constates temporales para probar el menu
-const Home = () => <h2>Home</h2>;
-const LigasTemp = () => <h2>Ligas</h2>; // 🔹 Renombrado para evitar conflicto
-const JugadoresTemp = () => <h2>Jugadores</h2>;
-const Equipos = () => <h2>Equipos</h2>;
-const Ranking = () => <h2>Ranking</h2>;
-const Admin =() => <h2>PanelAdmin</h2>
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
     <>
-    {/*menu, esto es un comentario en react*/}
-    <BrowserRouter>
-      <Menu />
-    {/*rutas para el funcionamiento del menu,!hay que modificarlo cuando esten los componentes front-end listos*/}
-      <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/perfil" element={<Perfil />} /> {/* 2. Ahora sí usa el componente correcto */}
-        <Route path="/verLiga" element={<Ligas />} /> {/* ✅ Conecta al componente real */}
-        <Route path="/jugadores" element={<Jugadores />} />
-        <Route path="/misEquipos" element={<Equipos />} />
-        <Route path="/ranking" element={<Ranking />} />
-        <Route path="/administrador" element={<PanelAdmin />} />
-      </Routes>
-    </BrowserRouter>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
   )
 }
