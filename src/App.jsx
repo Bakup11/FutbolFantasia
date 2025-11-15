@@ -2,25 +2,25 @@ console.log("Ruta Menu cargando:", import.meta.url);
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css'
 import './componentes/estilosGenerales.css'
+//importacion de componentes
 import Menu from './componentes/menu/menu.jsx';
 import Perfil from "./componentes/perfil/page.tsx"; // 1. Importa el componente real
 import PanelAdmin from "./componentes/administrador/PanelAdmin.jsx";
 import Jugadores from "./componentes/jugadores/Jugadores.jsx";
-import Navbar from "./componentes/inicio/Navbar.jsx";
 import Hero from "./componentes/inicio/Hero";
-import Features from "./componentes/inicio/Features";
+import SeleccionJugadores from "./componentes/seleccion-jugadores/seleccionJugadores.jsx";
 
 // ✅ Importar correctamente los archivos de Ligas
 import Ligas from "./componentes/ligas/Ligas.jsx";
 import "./componentes/ligas/Ligas.css";
 
-//constates temporales para probar el menu
-const Home = () => <h2>Home</h2>;
+//constates temporales para probar el menu (si tu componente tiene alguno de estos nombres solo comenta o elimina la constante de aqui abajo)
+//const Home = () => <h2>Home</h2>;
 const LigasTemp = () => <h2>Ligas</h2>; // 🔹 Renombrado para evitar conflicto
 const JugadoresTemp = () => <h2>Jugadores</h2>;
 const Equipos = () => <h2>Equipos</h2>;
 const Ranking = () => <h2>Ranking</h2>;
-const Admin =() => <h2>PanelAdmin</h2>
+//const Admin =() => <h2>PanelAdmin</h2>
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
         <Route path="/misEquipos" element={<Equipos />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/administrador" element={<PanelAdmin />} />
+        <Route path="/seleccion-jugadores" element={<SeleccionJugadores />} />
       </Routes>
     </BrowserRouter>
     </>

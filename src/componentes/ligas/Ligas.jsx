@@ -1,9 +1,10 @@
-import React from "react";
 import "./Ligas.css";
 import laligaLogo from "../../assets/IMG/laliga.png";
 import championsLogo from "../../assets/IMG/champions.png";
+import { useNavigate } from "react-router-dom";
 
 const Ligas = () => {
+  const navigate = useNavigate();
   return (
     <div className="ligas-container">
       {/* ======= ENCABEZADO ======= */}
@@ -18,7 +19,7 @@ const Ligas = () => {
       {/* ======= TARJETAS ======= */}
       <div className="ligas-cards">
         {/* ===== LIGA ESPAÑOLA ===== */}
-        <div className="liga-card">
+        <div className="liga-card" onClick={() => navigate('/seleccion-jugadores')}>
           <div className="card-header">
             <img src={laligaLogo} alt="Logo LaLiga" />
             <h2>Liga Española</h2>
