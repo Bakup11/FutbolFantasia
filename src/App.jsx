@@ -14,6 +14,12 @@ import SeleccionJugadores from "./componentes/seleccion-jugadores/seleccionJugad
 import Ligas from "./componentes/ligas/Ligas.jsx";
 import "./componentes/ligas/Ligas.css";
 
+//Pruba conexion supabase base de datos Ligas
+import { supabase } from '/src/lib/supabase.js';
+
+const test = await supabase.from("ligas").select("*");
+console.log(test);
+
 //constates temporales para probar el menu (si tu componente tiene alguno de estos nombres solo comenta o elimina la constante de aqui abajo)
 //const Home = () => <h2>Home</h2>;
 const LigasTemp = () => <h2>Ligas</h2>; // 🔹 Renombrado para evitar conflicto
