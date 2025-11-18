@@ -1,0 +1,98 @@
+/* 📦 Contenedor principal */
+.equipos-container {
+  background-color: #0a0f2c;
+  min-height: 100vh;
+  padding: 25px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* 🏷️ Títulos */
+.equipos-container h2,
+.equipos-container h3 {
+  text-align: center;
+  color: #27f5e5;
+  text-shadow: 0 0 10px rgba(39, 245, 229, 0.6);
+  margin-bottom: 15px;
+}
+
+/* 🔽 Selector de liga */
+.equipos-container select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  background-color: #061b34;
+  border: 2px solid #00aaff;
+  border-radius: 8px;
+  color: #9bd3ff;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+}
+
+/* 🔘 Botones generales */
+.equipos-container button {
+  background: #0e2f5a;
+  color: #27f5e5;
+  border: 2px solid #00aaff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  margin: 5px;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+}
+
+.equipos-container button:hover {
+  background: #0066cc;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* 📋 Lista de equipos */
+.equipos-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.equipos-container li {
+  background: rgba(0, 51, 102, 0.8);
+  border: 1px solid #00aaff;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: #d8f4ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+}
+
+/* 🎴 Tarjeta de jugador */
+.card-jugador {
+  background: rgba(0, 51, 102, 0.8);
+  border: 2px solid #00aaff;
+  padding: 15px;
+  border-radius: 12px;
+  width: 200px;
+  color: #aeeaff;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.2);
+  transition: 0.2s ease-in-out;
+}
+
+.card-jugador:hover {
+  transform: scale(1.05);
+  background: rgba(0, 102, 204, 0.8);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* 📝 Título del jugador */
+.card-jugador h4 {
+  color: #27f5e5;
+  text-shadow: 0 0 8px rgba(39, 245, 229, 0.5);
+  margin-bottom: 10px;
+}
+
+/* ⭐ Texto de puntos */
+.card-jugador p {
+  color: #9bd3ff;
+  margin-bottom: 10px;
+}
