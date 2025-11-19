@@ -4,7 +4,7 @@ import "./jugadores.css";
 export default function Jugadores() {
   const [jugadores, setJugadores] = useState([
     { id: 1, nombre: "Jude Bellingham", equipo: "Real Madrid", posicion: "MC", precio: 85, foto: "https://cdn.sofifa.net/players/252/371/24_120.png" },
-    { id: 2, nombre: "Pedri", equipo: "FC Barcelona", posicion: "MC", precio: 75, foto: "https://cdn.sofifa.net/players/253/005/24_120.png" },
+    { id: 2, nombre: "Pedri", equipo: "FC Barcelona", posicion: "MC", precio: 75, foto: "https://cdn.sofifa.net/players/251/854/26_120.png" },
     { id: 3, nombre: "Vinicius Jr", equipo: "Real Madrid", posicion: "EI", precio: 90, foto: "https://cdn.sofifa.net/players/238/794/24_120.png" },
 
   ]);

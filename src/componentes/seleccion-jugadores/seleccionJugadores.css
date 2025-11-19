@@ -3,33 +3,7 @@
   background-color: #0d1117;
   color: white;
   font-family: "Poppins", sans-serif;
-  padding: 0 40px 60px;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #11141a;
-  padding: 20px 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logo {
-  color: #00e0c7;
-  font-weight: 700;
-  font-size: 1.3rem;
-}
-
-.menu a {
-  color: #9ca3af;
-  margin-left: 20px;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.menu a:hover {
-  color: #00e0c7;
+  padding-top: 50px;
 }
 
 .titulo {
@@ -37,24 +11,26 @@
   font-size: 2.5rem;
   color: #00e0c7;
   font-weight: 700;
-  margin-top: 50px;
 }
 
 .subtitulo {
   text-align: center;
   color: #9ca3af;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .indicadores {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 60px;
+  height: 100px;
+  align-items: center;
+  background-color: #ffffff1c;
 }
 
 .badge {
-  background-color: #1f2937;
+  background-color: #4a4f57;
   padding: 12px 24px;
   border-radius: 9999px;
   color: white;
@@ -62,9 +38,15 @@
 }
 
 .badge span {
-  color: #00e0c7;
+  color: black;
+  background-color: #00e0c7;
   font-weight: 600;
   margin-right: 6px;
+  padding: 3px;
+  display: inline-block;
+  border-radius: 45%;
+  min-width: 20px;
+  text-align: center;
 }
 
 .jugadores-grid {
@@ -72,6 +54,7 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
   justify-items: center;
+  padding-top: 40px;
 }
 
 .card {
@@ -82,6 +65,7 @@
   box-shadow: 0 0 10px rgba(0, 224, 199, 0.05);
   text-align: center;
   transition: all 0.3s ease;
+  display: block;
 }
 
 .card:hover {
@@ -100,6 +84,7 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
+  background-color: white;
 }
 
 .card h3 {
@@ -146,9 +131,9 @@
 }
 
 .card-footer button {
-  background-color: #00e0c7;
+  background:linear-gradient(to right, #0d3687, #2691f0);
   border: none;
-  color: black;
+  color: white;
   font-weight: 600;
   border-radius: 6px;
   padding: 5px 12px;
@@ -157,7 +142,9 @@
 }
 
 .card-footer button:hover {
-  background-color: #00c2aa;
+ background: 
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), /* Capa oscura */
+    linear-gradient(to right, #0d3687, #2691f0); /* Tu degradado original */
 }
 
 .card-footer button:active {

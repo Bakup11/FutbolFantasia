@@ -36,7 +36,7 @@ const jugadoresData = [
     velocidad: 96,
     agilidad: 94,
     precio: 90,
-    imagen: "../public/vini.jpg",
+    imagen: "../public/vini.png",
   },
 ];
 
@@ -58,72 +58,58 @@ export default function SeleccionJugadores() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0d1117] text-white px-8 py-12">
-      <h1 className="text-4xl font-bold text-center text-cyan-400 mb-2">
-        Arma tu equipo
-      </h1>
-      <p className="text-center text-gray-400 mb-8">
+    // Se reemplazó min-h-screen bg... por .seleccion-container
+    <div className="seleccion-container">
+
+      <h1 className="titulo">Arma tu equipo</h1>
+      
+      <p className="subtitulo">
         Selecciona al menos 5 jugadores para continuar
       </p>
 
-      <div className="flex justify-center gap-4 mb-12">
-        <div className="bg-gray-800 px-6 py-3 rounded-full">
-          <span className="text-cyan-400 font-semibold">
-            {seleccionados.length}
-          </span>{" "}
-          Seleccionados
+      <div className="indicadores">
+        <div className="badge">
+          <span>{seleccionados.length}</span> Seleccionados
         </div>
-        <div className="bg-gray-800 px-6 py-3 rounded-full">
-          <span className="text-cyan-400 font-semibold">
-            €{presupuestoRestante}
-          </span>{" "}
-          Presupuesto
+        <div className="badge">
+          {/* Tu CSS .badge span ya tiene el color cyan, no hace falta clase extra */}
+          <span>€{presupuestoRestante}</span> Presupuesto
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+      <div className="jugadores-grid">
         {jugadoresData.map((jugador) => {
           const seleccionado = seleccionados.includes(jugador);
           return (
             <div
               key={jugador.id}
-              className={`w-72 p-6 rounded-2xl shadow-lg ${
-                seleccionado
-                  ? "bg-teal-800/50 border border-cyan-400"
-                  : "bg-gray-800"
-              }`}
+              // Lógica condicional usando las clases .card y .seleccionado
+              className={`card ${seleccionado ? "seleccionado" : ""}`}
             >
-              <div className="flex flex-col items-center mb-4">
-                <img
-                  src={jugador.imagen}
-                  alt={jugador.nombre}
-                  className="w-20 h-20 rounded-full mb-3"
-                />
-                <h3 className="font-bold text-lg">{jugador.nombre}</h3>
-                <p className="text-sm text-gray-400">
-                  {jugador.equipo} — {jugador.posicion}
-                </p>
-                <p className="text-sm text-gray-500">{jugador.edad} años</p>
-              </div>
+              {/* Eliminé el div wrapper del header para que el text-align center de .card funcione directo */}
+              <img
+                src={jugador.imagen}
+                alt={jugador.nombre}
+                // La clase .card img ya maneja el tamaño y borde
+              />
+              <h3>{jugador.nombre}</h3>
+              
+              <p className="info">
+                {jugador.equipo} — {jugador.posicion}
+              </p>
+              <p className="edad">{jugador.edad} años</p>
 
-              <div className="flex justify-around mb-4">
+              <div className="stats">
                 <StatBox label="Resistencia" value={jugador.resistencia} />
                 <StatBox label="Velocidad" value={jugador.velocidad} />
                 <StatBox label="Agilidad" value={jugador.agilidad} />
               </div>
 
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-cyan-400">
-                  €{jugador.precio} M
-                </span>
-                <button
-                  onClick={() => toggleJugador(jugador)}
-                  className={`px-3 py-1 rounded-md text-sm ${
-                    seleccionado
-                      ? "bg-gray-700 text-white"
-                      : "bg-cyan-500 hover:bg-cyan-600 text-black"
-                  }`}
-                >
+              <div className="card-footer">
+                {/* Cambié span por strong porque tu CSS usa .card-footer strong */}
+                <strong>€{jugador.precio} M</strong>
+                
+                <button onClick={() => toggleJugador(jugador)}>
                   {seleccionado ? "Deseleccionar" : "Seleccionar"}
                 </button>
               </div>
@@ -135,11 +121,14 @@ export default function SeleccionJugadores() {
   );
 }
 
+// Componente auxiliar ajustado a la estructura del CSS
 function StatBox({ label, value }) {
   return (
-    <div className="flex flex-col items-center">
-      <span className="text-xl font-bold text-cyan-400">{value}</span>
-      <span className="text-xs text-gray-400">{label}</span>
+    <div>
+      {/* El CSS .stats span estiliza el número */}
+      <span>{value}</span>
+      {/* El CSS .stats p estiliza la etiqueta (label) */}
+      <p>{label}</p>
     </div>
   );
 }
