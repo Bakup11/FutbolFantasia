@@ -13,7 +13,6 @@ import Equipos from "./componentes/equipos/equipos.jsx";
 // ✅ Importar correctamente los archivos de Ligas
 import Ligas from "./componentes/ligas/Ligas.jsx";
 import "./componentes/ligas/Ligas.css";
-import { supabaseJuan } from '/src/lib/supabase.js';
 
 //Pruba conexion supabase base de datos Ligas
 import { supabase } from '/src/lib/supabase.js';
