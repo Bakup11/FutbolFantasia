@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./jugadores.css";
+import { supabase } from '/src/lib/supabase.js';
 
 export default function Jugadores() {
-  const [jugadores, setJugadores] = useState([
-    { id: 1, nombre: "Jude Bellingham", equipo: "Real Madrid", posicion: "MC", precio: 85, foto: "https://cdn.sofifa.net/players/252/371/24_120.png" },
-    { id: 2, nombre: "Pedri", equipo: "FC Barcelona", posicion: "MC", precio: 75, foto: "https://cdn.sofifa.net/players/251/854/26_120.png" },
-    { id: 3, nombre: "Vinicius Jr", equipo: "Real Madrid", posicion: "EI", precio: 90, foto: "https://cdn.sofifa.net/players/238/794/24_120.png" },
-
-  ]);
+  const [jugadores, setJugadores] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [alineacion, setAlineacion] = useState({
     portero: [],
@@ -21,6 +18,49 @@ export default function Jugadores() {
   // --- nuevo: jugador seleccionado para touch
   const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
 
+  // --- NUEVO: Efecto para cargar datos al iniciar ---
+  useEffect(() => {
+    fetchJugadores();
+  }, []);
+
+  const fetchJugadores = async () => {
+    try {
+      setLoading(true);
+      // Consulta simple: Trae todo de la tabla 'jugadores'
+      const { data, error } = await supabase
+        .from('jugadores')
+        .select('*');
+
+      if (error) throw error;
+
+      // --- MAPEO DE DATOS ---
+      // Adaptamos los datos de la BD para que encajen con tu diseño actual
+      const jugadoresFormateados = data.map((j) => ({
+        id: j.id,
+        nombre: j.nombre,
+        equipo: j.equipo,
+        precio: j.precio,
+        // Como la BD no tiene 'posicion', calculamos una o ponemos una por defecto
+        posicion: determinarPosicion(j), 
+        // Como la BD no tiene 'foto', usamos una imagen genérica o un servicio de avatares
+        foto: `https://ui-avatars.com/api/?name=${j.nombre}&background=random` 
+      }));
+
+      setJugadores(jugadoresFormateados);
+    } catch (error) {
+      console.error("Error cargando jugadores:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Función auxiliar para inventar una posición basada en stats (Opcional)
+  // Esto es solo mientras agregas la columna 'posicion' real a tu base de datos
+  const determinarPosicion = (j) => {
+    if (j.resistencia > 85 && j.velocidad < 70) return "DFC"; // Defensa
+    if (j.velocidad > 90) return "EI"; // Extremo
+    return "MC"; // Medio por defecto
+  };
   const onDragStart = (e, jugador) => {
     e.dataTransfer.setData("jugador", JSON.stringify(jugador));
   };
