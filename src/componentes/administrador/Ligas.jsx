@@ -1,65 +1,196 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "../../lib/supabase";
 
 export default function Ligas() {
-  const [ligas, setLigas] = useState([
-    {
-      nombre: "Liga Española 2024/2025",
-      jugadores: 8,
-      min: 5,
-      max: 12,
-      creada: "26/10/2025",
-    },
-    {
-      nombre: "UEFA Champions League 2024/25",
-      jugadores: 4,
-      min: 5,
-      max: 12,
-      creada: "27/10/2025",
-    },
-  ]);
+  const [ligas, setLigas] = useState([]);
+  const [modoEdicion, setModoEdicion] = useState(false);
+  const [idEditando, setIdEditando] = useState(null);
+
+  const [formData, setFormData] = useState({
+    nombre: "",
+    descripcion: "",
+    min: "",
+    max: "",
+  });
+
+  // ================================
+  // Cargar usuario actual
+  // ================================
+  const obtenerUsuario = async () => {
+    const { data } = await supabase.auth.getUser();
+    return data?.user?.id || null;
+  };
+
+  // ================================
+  // Cargar ligas
+  // ================================
+  const cargarLigas = async () => {
+    const { data, error } = await supabase.from("ligas").select("*");
+
+    if (!error) setLigas(data);
+    else console.log(error);
+  };
+
+  useEffect(() => {
+    cargarLigas();
+  }, []);
+
+  // ================================
+  // Manejador de inputs
+  // ================================
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // ================================
+  // Crear código aleatorio
+  // ================================
+  const generarCodigo = () =>
+    Math.random().toString(36).substring(2, 7).toUpperCase();
+
+  // ================================
+  // Crear liga
+  // ================================
+  const crearLiga = async () => {
+    const user_id = await obtenerUsuario();
+
+    const { error } = await supabase.from("ligas").insert([
+      {
+        nombre: formData.nombre,
+        descripcion: formData.descripcion,
+        codigo: generarCodigo(),
+        creador_id: user_id,
+        created_at: new Date(),
+      },
+    ]);
+
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    cargarLigas();
+    resetForm();
+  };
+
+  // ================================
+  // Activar edición
+  // ================================
+  const activarEdicion = (liga) => {
+    setModoEdicion(true);
+    setIdEditando(liga.id_ligas);
+
+    setFormData({
+      nombre: liga.nombre,
+      descripcion: liga.descripcion,
+    });
+  };
+
+  // ================================
+  // Guardar edición
+  // ================================
+  const guardarEdicion = async () => {
+    const { error } = await supabase
+      .from("ligas")
+      .update({
+        nombre: formData.nombre,
+        descripcion: formData.descripcion,
+      })
+      .eq("id_ligas", idEditando);
+
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    cargarLigas();
+    resetForm();
+    setModoEdicion(false);
+    setIdEditando(null);
+  };
+
+  // ================================
+  // Eliminar liga
+  // ================================
+  const borrarLiga = async (id) => {
+    await supabase.from("ligas").delete().eq("id_ligas", id);
+    cargarLigas();
+  };
+
+  // ================================
+  // Reset form
+  // ================================
+  const resetForm = () => {
+    setFormData({
+      nombre: "",
+      descripcion: "",
+      min: "",
+      max: "",
+    });
+  };
+
+  // ================================
+  // Submit form
+  // ================================
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    modoEdicion ? guardarEdicion() : crearLiga();
+  };
 
   return (
     <div className="panel">
+      {/* LISTA */}
       <div className="lista">
         <h2>Ligas Creadas</h2>
-        {ligas.map((l, index) => (
-          <div key={index} className="card">
+
+        {ligas.map((l) => (
+          <div key={l.id_ligas} className="card">
             <div className="info">
               <strong>{l.nombre}</strong>
-              <p>
-                Jugadores: {l.jugadores}/{l.max} &nbsp; Min: {l.min} - Max:{" "}
-                {l.max}
-              </p>
-              <p>Creada: {l.creada}</p>
+              <p>Código: {l.codigo}</p>
+              <p>Creada: {new Date(l.created_at).toLocaleDateString()}</p>
             </div>
+
             <div className="acciones">
-              <button className="editar">Editar</button>
-              <button className="borrar">Borrar</button>
+              <button className="editar" onClick={() => activarEdicion(l)}>
+                Editar
+              </button>
+
+              <button className="borrar" onClick={() => borrarLiga(l.id_ligas)}>
+                Borrar
+              </button>
             </div>
           </div>
         ))}
       </div>
 
+      {/* FORMULARIO */}
       <div className="formulario">
-        <h2>Crear nueva liga</h2>
-        <form>
+        <h2>{modoEdicion ? "Editar liga" : "Crear nueva liga"}</h2>
+
+        <form onSubmit={handleSubmit}>
           <label>Nombre de la liga</label>
-          <input placeholder="Ej: Liga 2025/2026" />
+          <input
+            name="nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            placeholder="Ej: Liga 2025/2026"
+          />
 
           <label>Descripción</label>
           <textarea
-            placeholder="Describe tu liga, reglas, premios, etc."
+            name="descripcion"
+            value={formData.descripcion}
+            onChange={handleChange}
+            placeholder="Describe tu liga..."
             rows={3}
           ></textarea>
 
-          <label>Mínimo de jugadores</label>
-          <input placeholder="5" type="number" />
-
-          <label>Máximo de jugadores</label>
-          <input placeholder="12" type="number" />
-
           <button type="submit" className="crear">
-            Crear Liga
+            {modoEdicion ? "Guardar Cambios" : "Crear Liga"}
           </button>
         </form>
       </div>
