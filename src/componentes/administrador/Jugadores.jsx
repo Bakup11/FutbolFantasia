@@ -1,103 +1,154 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import supabase from "../../lib/supabase";
 
 export default function Jugadores() {
-  const [jugadores, setJugadores] = useState([
-    {
-      nombre: "Jude Bellingham",
-      equipo: "Real Madrid",
-      posicion: "MC",
-      edad: 21,
-      precio: 85,
-      resistencia: 88,
-      velocidad: 82,
-      agilidad: 89,
-    },
-    {
-      nombre: "Pedri Gonzalez",
-      equipo: "FC Barcelona",
-      posicion: "MC",
-      edad: 21,
-      precio: 75,
-      resistencia: 85,
-      velocidad: 78,
-      agilidad: 92,
-    },
-    {
-      nombre: "Vinicius Jr",
-      equipo: "Real Madrid",
-      posicion: "EI",
-      edad: 24,
-      precio: 90,
-      resistencia: 82,
-      velocidad: 96,
-      agilidad: 94,
-    },
-  ]);
+  const [jugadores, setJugadores] = useState([]);
+
+  // estados del formulario
+  const [nombre, setNombre] = useState("");
+  const [equipo, setEquipo] = useState("");
+  const [precio, setPrecio] = useState("");
+  const [resistencia, setResistencia] = useState("");
+  const [velocidad, setVelocidad] = useState("");
+  const [agilidad, setAgilidad] = useState("");
+
+  // para saber si estamos editando
+  const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    obtenerJugadores();
+  }, []);
+
+  const obtenerJugadores = async () => {
+    const { data, error } = await supabase.from("jugadores").select("*");
+    if (!error) setJugadores(data ?? []);
+  };
+
+  const crearOActualizarJugador = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      nombre,
+      equipo,
+      precio: precio === "" ? null : Number(precio),
+      resistencia: resistencia === "" ? null : Number(resistencia),
+      velocidad: velocidad === "" ? null : Number(velocidad),
+      agilidad: agilidad === "" ? null : Number(agilidad),
+    };
+
+    if (editId) {
+      // actualizar
+      const { error } = await supabase
+        .from("jugadores")
+        .update(payload)
+        .eq("id", editId);
+
+      if (error) {
+        alert("Error al actualizar: " + error.message);
+        return;
+      }
+      alert("Jugador actualizado correctamente");
+    } else {
+      // crear
+      const { error } = await supabase.from("jugadores").insert([payload]);
+      if (error) {
+        alert("Error al crear: " + error.message);
+        return;
+      }
+      alert("Jugador creado con éxito 🚀");
+    }
+
+    limpiarFormulario();
+    obtenerJugadores();
+  };
+
+  const limpiarFormulario = () => {
+    setNombre("");
+    setEquipo("");
+    setPrecio("");
+    setResistencia("");
+    setVelocidad("");
+    setAgilidad("");
+    setEditId(null);
+  };
+
+  const editarJugador = (j) => {
+    setNombre(j.nombre);
+    setEquipo(j.equipo);
+    setPrecio(j.precio);
+    setResistencia(j.resistencia);
+    setVelocidad(j.velocidad);
+    setAgilidad(j.agilidad);
+    setEditId(j.id);
+  };
+
+  const borrarJugador = async (id) => {
+    const confirmar = confirm("¿Seguro que quieres borrar este jugador?");
+    if (!confirmar) return;
+
+    const { error } = await supabase.from("jugadores").delete().eq("id", id);
+    if (error) {
+      alert("Error al borrar: " + error.message);
+      return;
+    }
+    alert("Jugador borrado correctamente");
+    obtenerJugadores();
+  };
 
   return (
     <div className="panel">
+      {/* LISTA DE JUGADORES — IZQUIERDA */}
       <div className="lista">
         <h2>Jugadores Registrados</h2>
-        {jugadores.map((j, index) => (
-          <div key={index} className="card">
+
+        {jugadores.map((j) => (
+          <div key={j.id} className="card">
             <div className="info">
               <strong>{j.nombre}</strong>
-              <p>
-                {j.equipo} • {j.posicion} • {j.edad} años • €{j.precio}M
-              </p>
-              <p>
-                Resistencia: {j.resistencia}, Velocidad: {j.velocidad},
-                Agilidad: {j.agilidad}
-              </p>
+              <p>{j.equipo} • €{j.precio}M</p>
+              <p>Resistencia: {j.resistencia}, Velocidad: {j.velocidad}, Agilidad: {j.agilidad}</p>
             </div>
             <div className="acciones">
-              <button className="editar">Editar</button>
-              <button className="borrar">Borrar</button>
+              <button className="editar" onClick={() => editarJugador(j)}>Editar</button>
+              <button className="borrar" onClick={() => borrarJugador(j.id)}>Borrar</button>
             </div>
           </div>
         ))}
       </div>
 
+      {/* FORMULARIO — DERECHA */}
       <div className="formulario">
-        <h2>Crear nuevo jugador</h2>
-        <form>
+        <h2>{editId ? "Editar jugador" : "Crear nuevo jugador"}</h2>
+        <form onSubmit={crearOActualizarJugador}>
           <label>Nombre del jugador</label>
-          <input placeholder="Ej: Cristiano Ronaldo" />
+          <input value={nombre} onChange={(e) => setNombre(e.target.value)} />
 
           <label>Equipo</label>
-          <input placeholder="Ej: Al-Nassr F. C." />
-
-          <label>Posición</label>
-          <select>
-            <option>Seleccionar Posición</option>
-            <option>DC</option>
-            <option>MC</option>
-            <option>EI</option>
-            <option>ED</option>
-          </select>
-
-          <label>Edad</label>
-          <input placeholder="Ej: 25" type="number" />
+          <input value={equipo} onChange={(e) => setEquipo(e.target.value)} />
 
           <label>Precio (€M)</label>
-          <input placeholder="Ej: 90" type="number" />
+          <input value={precio} onChange={(e) => setPrecio(e.target.value)} type="number" />
 
           <h4>Estadísticas</h4>
+
           <label>Resistencia</label>
-          <input placeholder="Ej: 85" type="number" />
+          <input value={resistencia} onChange={(e) => setResistencia(e.target.value)} type="number" />
 
           <label>Velocidad</label>
-          <input placeholder="Ej: 95" type="number" />
+          <input value={velocidad} onChange={(e) => setVelocidad(e.target.value)} type="number" />
 
           <label>Agilidad</label>
-          <input placeholder="Ej: 92" type="number" />
-
-          <label>Foto del jugador</label>
-          <input type="file" accept="image/png, image/jpeg" />
+          <input value={agilidad} onChange={(e) => setAgilidad(e.target.value)} type="number" />
 
           <button type="submit" className="crear">
-            Crear Jugador
+            {editId ? "Actualizar" : "Crear"}
           </button>
+
+          {editId && (
+            <button type="button" onClick={limpiarFormulario} style={{ marginLeft: "8px" }}>
+              Cancelar
+            </button>
+          )}
         </form>
       </div>
     </div>
